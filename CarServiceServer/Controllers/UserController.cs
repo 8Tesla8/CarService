@@ -10,7 +10,7 @@ namespace CarServiceServer.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IRepositoryFactory _repositoryFactory = new RepositoryFactory();
+        private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();
 
         //todo test
         // PUT api/values/5

@@ -7,10 +7,12 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
     <Folder Include="Converter\" />
+    <Folder Include="Injection\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>

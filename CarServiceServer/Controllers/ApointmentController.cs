@@ -11,7 +11,7 @@ namespace CarServiceServer.Controllers
     [ApiController]
     public class ApointmentController : ControllerBase
     {
-        private readonly IRepositoryFactory _repositoryFactory = new RepositoryFactory();
+        private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();
 
         [HttpPost]
         public ActionResult<bool> Post([FromBody] AppointmentDTO dto)

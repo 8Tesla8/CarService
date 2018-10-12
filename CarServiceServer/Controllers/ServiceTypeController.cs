@@ -10,7 +10,7 @@ namespace CarServiceServer.Controllers
     [ApiController]
     public class ServiceTypeController : ControllerBase
     {
-        private readonly IRepositoryFactory _repositoryFactory = new RepositoryFactory();
+        private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();
 
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
