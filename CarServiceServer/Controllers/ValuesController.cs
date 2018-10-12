@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelDb;
 using ModelDb.Models;
+using ModelDb.Repository;
 
 namespace CarServiceServer.Controllers
 {
@@ -17,21 +18,45 @@ namespace CarServiceServer.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            //using (var db = new Context())
+            //{
+            //    db.Database.Migrate();
+
+            //    db.User.Add(new User { Email = "Test" });
+            //    var count = db.SaveChanges();
+            //    Console.WriteLine("{0} records saved to database", count);
+
+            //    Console.WriteLine();
+            //    Console.WriteLine("All blogs in database:");
+            //    foreach (var user in db.User)
+            //    {
+            //        Console.WriteLine(" - {0}", user.FirstName);
+            //    }
+            //}
+
+            //work
+            //var rep = new UserRepository();
+            //var res1 = rep.AddIfNotExist(new User(){ Email = "Test"});
+            //var res2 = rep.AddIfNotExist(new User() { Email = "Test2" });
+
+            //rep.Update(new User() { Email = "Test", Notify = true });
+
+            //var d = rep.GetAll();
+
+            var rep = new ServiceTypeRepository();
+            var res1 = rep.AddIfNotExist(new ServiceType() { Name = "Test" });
+            var res2 = rep.AddIfNotExist(new ServiceType() { Name = "Test2" });
+            var res3 = rep.AddIfNotExist(new ServiceType() { Name = "Test2" });
+            var d = rep.GetAll();
+
+            var d2 = 0;
             using (var db = new Context())
             {
-                db.Database.Migrate();
-
-                db.User.Add(new User { FirstName = "Test" });
-                var count = db.SaveChanges();
-                Console.WriteLine("{0} records saved to database", count);
-
-                Console.WriteLine();
-                Console.WriteLine("All blogs in database:");
-                foreach (var user in db.User)
-                {
-                    Console.WriteLine(" - {0}", user.FirstName);
-                }
+                var d34 = db.User.FirstOrDefault(u => u.Id == 1);
+                if (d34 != null)
+                    d2 = d34.Id;
             }
+
 
             return new string[] { "value1", "value2" };
         }

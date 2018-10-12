@@ -6,6 +6,14 @@ namespace ModelDb
 {
     public class Context : DbContext
     {
+        public Context() : base()
+        {
+            Database.EnsureCreated();
+        }
+
+        public Context(DbContextOptions<Context> options) : base(options)
+        { }
+
         public DbSet<User> User { get; set; }
         public DbSet<Car> Car { get; set; }
         public DbSet<CarModel> CarModel { get; set; }
@@ -18,14 +26,5 @@ namespace ModelDb
         {
             optionsBuilder.UseSqlite("Data Source=carservice.db");
         }
-
-        public Context() : base ()
-        {
-            Database.EnsureCreated();
-        }
-
-        public Context(DbContextOptions<Context> options) : base(options)
-        { }
-
     }
 }
