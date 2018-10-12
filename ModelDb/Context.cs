@@ -8,7 +8,7 @@ namespace ModelDb
     {
         public DbSet<User> User { get; set; }
         public DbSet<Car> Car { get; set; }
-        public DbSet<CarInfo> CarInfo { get; set; }
+        public DbSet<CarModel> CarModel { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
         public DbSet<ServiceType> ServiceType { get; set; }
         public DbSet<RepairType> RepairType { get; set; }

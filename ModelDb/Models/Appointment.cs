@@ -12,7 +12,7 @@ namespace ModelDb.Models
         public User User { get; set; }
 
         public int CarId { get; set; }
-        public CarInfo Car { get; set; }
+        public Car Car { get; set; }
 
         public string Message { get; set; }
 
