@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ModelDb.Models
 {
@@ -14,6 +15,7 @@ namespace ModelDb.Models
         public string FirstName { get; set; }
         public string SecondName { get; set; }
 
-        public ICollection<CarInfo> Cars { get; set; }
+        [NotMapped]
+        public ICollection<CarInfo> Car { get; set; }
     }
 }
