@@ -3,29 +3,29 @@ using ModelDb.Repository;
 
 namespace ModelDb.Factory
 {
-    public class RepositoryFactory
+    public class RepositoryFactory : IRepositoryFactory
     {
-        AppointmentRepository GetAppointmentRepository()
+        public AppointmentRepository GetAppointmentRepository()
         {
             return new AppointmentRepository();
         }
 
-        CarModelRepository GetModelRepository()
+        public CarModelRepository GetModelRepository()
         {
             return new CarModelRepository();
         }
 
-        CarRepository GetCarRepository()
+        public CarRepository GetCarRepository()
         {
             return new CarRepository();
         }
 
-        ServiceTypeRepository GetServiceType()
+        public ServiceTypeRepository GetServiceType()
         {
             return new ServiceTypeRepository();
         }
 
-        UserRepository GetUserRepository(){
+        public UserRepository GetUserRepository(){
             return new UserRepository();
         }
     }

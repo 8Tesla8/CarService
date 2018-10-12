@@ -43,27 +43,27 @@ namespace CarServiceServer.Controllers
 
             //var d = rep.GetAll();
 
-            var rep = new ServiceTypeRepository();
-            var res1 = rep.AddIfNotExist(new ServiceType() { Name = "Test" });
-            var res2 = rep.AddIfNotExist(new ServiceType() { Name = "Test2" });
-            var res3 = rep.AddIfNotExist(new ServiceType() { Name = "Test2" });
-            var d = rep.GetAll();
+            //var rep = new ServiceTypeRepository();
+            //var res1 = rep.AddIfNotExist(new ServiceType() { Name = "Test" });
+            //var res2 = rep.AddIfNotExist(new ServiceType() { Name = "Test2" });
+            //var res3 = rep.AddIfNotExist(new ServiceType() { Name = "Test2" });
+            //var d = rep.GetAll();
 
-            var d2 = 0;
-            using (var db = new Context())
-            {
-                var d34 = db.User.FirstOrDefault(u => u.Id == 1);
-                if (d34 != null)
-                    d2 = d34.Id;
-            }
+            //var d2 = 0;
+            //using (var db = new Context())
+            //{
+            //    var d34 = db.User.FirstOrDefault(u => u.Id == 1);
+            //    if (d34 != null)
+            //        d2 = d34.Id;
+            //}
 
 
-            var e = new AppointmentRepository();
-            e.AddIfNotExist(new Appointment(){StartTime = new DateTime(1000)});
+            //var e = new AppointmentRepository();
+            //e.AddIfNotExist(new Appointment(){StartTime = new DateTime(1000)});
 
-            e.Update(new Appointment() { StartTime = new DateTime(1000), EndTime = new DateTime(500) });
+            //e.Update(new Appointment() { StartTime = new DateTime(1000), EndTime = new DateTime(500) });
 
-            var f = e.GetAll();
+            //var f = e.GetAll();
             return new string[] { "value1", "value2" };
         }
 
