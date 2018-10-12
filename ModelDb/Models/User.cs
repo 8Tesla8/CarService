@@ -15,7 +15,6 @@ namespace ModelDb.Models
         public string FirstName { get; set; }
         public string SecondName { get; set; }
 
-        [NotMapped]
-        public ICollection<CarInfo> Car { get; set; }
+        public ICollection<Car> Car { get; set; }
     }
 }

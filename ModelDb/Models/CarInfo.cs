@@ -11,8 +11,5 @@ namespace ModelDb.Models
         public int CarId { get; set; }
         public Car Car { get; set; }
         public int Year { get; set; }
-
-        [NotMapped]
-        public ICollection<User> User { get; set; }
     }
 }
