@@ -23,6 +23,18 @@ namespace ModelDb.Repository
             }
         }
 
+        /// <summary>
+        /// <c>Get full model</c>  
+        /// </summary>
+        public CarModel Find(CarModel model)
+        {
+            using (var db = new Context())
+            {
+                return db.CarModel.
+                            FirstOrDefault(c => c.Name == model.Name);
+            }
+        }
+
         public List<CarModel> GetAll()
         {
             using (var db = new Context())
@@ -33,7 +45,19 @@ namespace ModelDb.Repository
 
         public bool Update(CarModel model)
         {
-            throw new NotSupportedException(nameof(CarModel));
+            using (var db = new Context())
+            {
+                var carModel = db.CarModel.
+                                 FirstOrDefault(c => c.Id == model.Id);
+
+                if (carModel == null)
+                    return false;
+
+                carModel.Name = model.Name;
+
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }

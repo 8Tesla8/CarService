@@ -14,7 +14,7 @@ namespace ModelDb.Repository
             {
                 var car = db.Car.
                             FirstOrDefault(s => s.Year == model.Year &&
-                                           s.CarModel.Name == model.CarModel.Name);
+                                                s.CarModel.Name == model.CarModel.Name);
 
                 if (car != null)
                     return false;
@@ -22,6 +22,19 @@ namespace ModelDb.Repository
                 db.Car.Add(model);
                 db.SaveChanges();
                 return true;
+            }
+        }
+
+        /// <summary>
+        /// <c>Get full model</c>  
+        /// </summary>
+        public Car Find(Car model)
+        {
+            using (var db = new Context())
+            {
+                return db.Car.
+                          FirstOrDefault(s => s.Year == model.Year &&
+                                              s.CarModel.Name == model.CarModel.Name);
             }
         }
 
@@ -39,7 +52,7 @@ namespace ModelDb.Repository
             {
                 var car = db.Car.
                             FirstOrDefault(s => s.Year == model.Year &&
-                                           s.CarModel.Name == model.CarModel.Name);
+                                                s.CarModel.Name == model.CarModel.Name);
 
                 if (car == null)
                     return false;
@@ -47,6 +60,7 @@ namespace ModelDb.Repository
                 if (model.CarModel == null)
                     return false;
                     
+                car.Year = model.Year;
 
                 if (car.CarModel.Name != model.CarModel.Name)
                 {
@@ -58,8 +72,6 @@ namespace ModelDb.Repository
                         car.CarModel = carModel;
                     }
                 }
-
-                car.Year = model.Year;
 
                 db.SaveChanges();
                 return true;

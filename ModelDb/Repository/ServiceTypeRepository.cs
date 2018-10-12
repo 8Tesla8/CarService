@@ -13,7 +13,7 @@ namespace ModelDb.Repository
             using (var db = new Context())
             {
                 var serviceType = db.ServiceType.
-                             FirstOrDefault(s => s.Name == model.Name);
+                                     FirstOrDefault(s => s.Name == model.Name);
 
                 if (serviceType != null)
                     return false;
@@ -21,6 +21,18 @@ namespace ModelDb.Repository
                 db.ServiceType.Add(model);
                 db.SaveChanges();
                 return true;
+            }
+        }
+
+        /// <summary>
+        /// <c>Get full model</c>  
+        /// </summary>
+        public ServiceType Find(ServiceType model)
+        {
+            using (var db = new Context())
+            {
+                return db.ServiceType.
+                             FirstOrDefault(s => s.Name == model.Name);
             }
         }
 
@@ -34,7 +46,19 @@ namespace ModelDb.Repository
 
         public bool Update(ServiceType model)
         {
-            throw new NotSupportedException(nameof(ServiceType));
+            using (var db = new Context())
+            {
+                var serviceType = db.ServiceType.
+                                    FirstOrDefault(s => s.Id == model.Id);
+
+                if (serviceType == null)
+                    return false;
+
+                serviceType.Name = model.Name;
+
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }

@@ -33,6 +33,18 @@ namespace ModelDb.Repository
         }
 
         /// <summary>
+        /// <c>Get full model</c>  
+        /// </summary>
+        public User Find(User model)
+        {
+            using (var db = new Context())
+            {
+                return db.User.
+                          FirstOrDefault(u => u.Email == model.Email);
+            }
+        }
+
+        /// <summary>
         /// <c>Update only notify property</c>  
         /// </summary>
         public bool Update(User model)

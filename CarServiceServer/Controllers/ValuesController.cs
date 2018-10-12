@@ -58,6 +58,12 @@ namespace CarServiceServer.Controllers
             }
 
 
+            var e = new AppointmentRepository();
+            e.AddIfNotExist(new Appointment(){StartTime = new DateTime(1000)});
+
+            e.Update(new Appointment() { StartTime = new DateTime(1000), EndTime = new DateTime(500) });
+
+            var f = e.GetAll();
             return new string[] { "value1", "value2" };
         }
 

@@ -4,10 +4,11 @@ using System.Text;
 
 namespace ModelDb.Repository
 {
-    //CRUD model
+    //almost CRUD model
     public interface IRepository<T> { 
         List<T> GetAll(); 
         bool AddIfNotExist(T model);
         bool Update(T model);
+        T Find(T model);
     }
 }

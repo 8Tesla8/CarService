@@ -12,7 +12,7 @@ namespace ModelDb.Repository
         {
             using (var db = new Context())
             {
-                var appointment =  db.Appointment.
+                var appointment = db.Appointment.
                                      FirstOrDefault(a => a.StartTime == model.StartTime);
 
                 if (appointment != null)
@@ -21,6 +21,18 @@ namespace ModelDb.Repository
                 db.Appointment.Add(model);
                 db.SaveChanges();
                 return true;
+            }
+        }
+
+        /// <summary>
+        /// <c>Get full model</c>  
+        /// </summary>
+        public Appointment Find(Appointment model)
+        {
+            using (var db = new Context())
+            {
+                return db.Appointment.
+                     FirstOrDefault(a => a.StartTime == model.StartTime);
             }
         }
 
@@ -34,7 +46,19 @@ namespace ModelDb.Repository
 
         public bool Update(Appointment model)
         {
-            throw new NotImplementedException("I do not need this method for my task");
+            using (var db = new Context())
+            {
+                var appointment = db.Appointment.
+                     FirstOrDefault(a => a.StartTime == model.StartTime);
+
+                if (appointment == null)
+                    return false;
+
+                appointment = model;
+
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }
