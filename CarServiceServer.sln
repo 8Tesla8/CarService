@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarServiceServer", "CarServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelDb", "ModelDb\ModelDb.csproj", "{2103C227-161D-408A-9907-BB39272DDF96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillDb", "FillDb\FillDb.csproj", "{6DDD042B-8CEF-43C1-BE07-AE53BB04E7CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{2103C227-161D-408A-9907-BB39272DDF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2103C227-161D-408A-9907-BB39272DDF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2103C227-161D-408A-9907-BB39272DDF96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDD042B-8CEF-43C1-BE07-AE53BB04E7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDD042B-8CEF-43C1-BE07-AE53BB04E7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDD042B-8CEF-43C1-BE07-AE53BB04E7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDD042B-8CEF-43C1-BE07-AE53BB04E7CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
