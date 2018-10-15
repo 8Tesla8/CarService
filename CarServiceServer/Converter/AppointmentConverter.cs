@@ -78,7 +78,6 @@ namespace CarServiceServer.Converter
             var carRepository = _repositoryFactory.GetCarRepository();
             var car = new Car()
             {
-                ModelId = foundCarModel.Id,
                 CarModel = foundCarModel,
                 Year = dto.Car.Year,
             };

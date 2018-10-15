@@ -8,7 +8,6 @@ namespace ModelDb.Models
     {
         public int Id { get; set; }
 
-        public int ModelId { get; set; }
         public CarModel CarModel { get; set; }
         public int Year { get; set; }
     }

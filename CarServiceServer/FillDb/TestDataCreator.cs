@@ -85,7 +85,7 @@ namespace CarServiceServer.FillDb
                 db.Car.Add(new Car()
                 {
                     Year = 2008,
-                    CarModel = kia,
+                    CarModel = kia,  
                 });
 
                 db.SaveChanges();

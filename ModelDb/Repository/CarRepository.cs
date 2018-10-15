@@ -19,6 +19,10 @@ namespace ModelDb.Repository
                 if (car != null)
                     return false;
 
+                model.Id = db.Car.Count() + 1;
+
+                model.CarModel = db.CarModel.FirstOrDefault(c => c.Id == model.CarModel.Id);
+
                 db.Car.Add(model);
                 db.SaveChanges();
                 return true;
@@ -68,7 +72,6 @@ namespace ModelDb.Repository
 
                     if (carModel != null)
                     {
-                        car.ModelId = carModel.Id;
                         car.CarModel = carModel;
                     }
                 }
