@@ -9,6 +9,7 @@ using ModelDb.Factory;
 using ModelDb.Models;
 using ModelDb.Repository;
 using CarServiceServer.FillDb;
+using Microsoft.AspNetCore.Cors;
 
 namespace CarServiceServer.Controllers
 {
