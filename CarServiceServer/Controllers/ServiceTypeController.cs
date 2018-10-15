@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ModelDb.Factory;
 using ModelDb.Repository;
@@ -8,6 +9,7 @@ namespace CarServiceServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAllHeaders")]
     public class ServiceTypeController : ControllerBase
     {
         private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();
