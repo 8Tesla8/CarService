@@ -27,7 +27,7 @@ namespace CarServiceServer.Controllers
                     Notify = dto.Notify,
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return BadRequest();
             }
