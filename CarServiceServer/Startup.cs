@@ -29,7 +29,21 @@ namespace CarServiceServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            // option 1
+            //services.AddCors();
+
+            // option 2
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -50,11 +64,14 @@ namespace CarServiceServer
                 app.UseHsts();
             }
 
-            app.UseCors(
-                          options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
-                      );
+            // option 1
+            //app.UseCors(options =>
+            //options.WithOrigins("http://localhost:4200").AllowAnyMethod());
 
-            //app.UseHttpsRedirection();
+            // option 2
+            app.UseCors("AllowAllHeaders");
+
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

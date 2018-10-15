@@ -1,5 +1,6 @@
 ﻿using System;
 using CarServiceServer.Converter;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ModelDb.DTO;
 using ModelDb.Factory;
@@ -9,6 +10,7 @@ namespace CarServiceServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAllHeaders")]
     public class ApointmentController : ControllerBase
     {
         private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();

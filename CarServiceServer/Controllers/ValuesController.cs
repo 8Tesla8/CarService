@@ -15,6 +15,7 @@ namespace CarServiceServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAllHeaders")]
     public class ValuesController : ControllerBase
     {
         // GET api/values
