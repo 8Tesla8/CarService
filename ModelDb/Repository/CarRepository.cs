@@ -19,7 +19,7 @@ namespace ModelDb.Repository
                 if (car != null)
                     return false;
 
-                model.Id = db.Car.Count() + 1;
+                model.Id = db.Car.Max(c => c.Id) + 1; 
 
                 model.CarModel = db.CarModel.FirstOrDefault(c => c.Id == model.CarModel.Id);
 
