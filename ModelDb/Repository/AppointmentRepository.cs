@@ -18,6 +18,17 @@ namespace ModelDb.Repository
                 if (appointment != null)
                     return false;
 
+                if (model.Car != null)
+                    model.Car = db.Car.
+                        FirstOrDefault(c => c.Id == model.CarId);
+
+                if (model.ServiceType != null)
+                    model.ServiceType = db.ServiceType.
+                        FirstOrDefault(s => s.Id == model.ServiceTypeId);
+
+                appointment.User = db.User.
+                    FirstOrDefault(u=> u.Id == model.UserId);
+
                 db.Appointment.Add(model);
                 db.SaveChanges();
                 return true;

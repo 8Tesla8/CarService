@@ -21,27 +21,38 @@ namespace CarServiceServer.Converter
             var user = GetUser(dto);
             var serviceType = GetServiceType(dto);
 
-            return new Appointment()
+            var appointment = new Appointment()
             {
                 StartTime = dto.StartTime,
-                EndTime = dto.EndTime,
 
                 Message = dto.Message,
 
                 User = user,
                 UserId = user.Id,
-
-                Car = car,
-                CarId = car.Id,
-
-                ServiceType = serviceType,
-                ServiceTypeId = serviceType.Id,
             };
+
+            if(dto.EndTime != null)
+                appointment.EndTime = dto.EndTime;
+
+            if(car != null){
+                appointment.Car = car;
+                appointment.CarId = car.Id;
+            }
+
+            if(serviceType != null){
+                appointment.ServiceTypeId = serviceType.Id;
+                appointment.ServiceType = serviceType;
+            }
+
+            return appointment;
         }
 
 
         private ServiceType GetServiceType(AppointmentDTO dto)
         {
+            if (dto.ServiceType == null)
+                return null;
+
             var serviceTypeRepository = _repositoryFactory.GetServiceType();
             var serviceType = serviceTypeRepository.Find(new ServiceType() 
             {
@@ -54,6 +65,9 @@ namespace CarServiceServer.Converter
 
         private Car GetCar(AppointmentDTO dto)
         {
+            if (dto.Car == null)
+                return null;
+
             var carModelRepository = _repositoryFactory.GetModelRepository();
             var foundCarModel = carModelRepository.Find(new CarModel()
             {
