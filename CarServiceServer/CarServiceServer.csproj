@@ -8,6 +8,8 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Converter\" />
     <Folder Include="Injection\" />
+    <Folder Include="FillDb\" />
+    <Folder Include="Factory\" />
   </ItemGroup>
 
   <ItemGroup>

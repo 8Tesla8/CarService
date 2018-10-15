@@ -2,14 +2,19 @@
 using ModelDb;
 using ModelDb.Models;
 using ModelDb.Repository;
+using System.Linq;
 
-namespace FillDb
+namespace CarServiceServer.FillDb
 {
-    public class FillDb
+    public class TestDataCreator
     {
-
         public void Fill()
         {
+            var repository = new UserRepository();
+
+            if (repository.GetAll().Count > 0)
+                return;
+
             FillServiceType();
             FillCarModel();
             FillRepairType();
@@ -39,25 +44,24 @@ namespace FillDb
 
         private void FillRepairType()
         {
-            var repository = new ServiceTypeRepository();
-
-            var repairType = repository.Find(new ServiceType() { Name = "Vehicle Repair" });
-            var otherType = repository.Find(new ServiceType() { Name = "Other" });
-
             using (var db = new Context())
             {
+                var repairType = db.ServiceType.FirstOrDefault(s => s.Name == "Vehicle Repair");
                 db.RepairType.Add(new RepairType()
                 {
                     Name = "Check engine",
                     ServiceType = repairType,
+                    ServiceTypeId = repairType.Id,
                     Price = 220,
                     Hours = 0.4,
                 });
 
+                var otherType = db.ServiceType.FirstOrDefault(s => s.Name == "Other");
                 db.RepairType.Add(new RepairType()
                 {
                     Name = "Car wash",
                     ServiceType = otherType,
+                    ServiceTypeId = otherType.Id,
                     Price = 280,
                     Hours = 0.6,
                 });
@@ -68,29 +72,32 @@ namespace FillDb
 
         private void FillCar()
         {
-            var carModelrepository = new CarModelRepository();
-
-            var ford = carModelrepository.Find(new CarModel() { Name = "Ford" });
-            var kia = carModelrepository.Find(new CarModel() { Name = "KIA" });
-
-            var carRepository = new CarRepository();
-          
-            carRepository.AddIfNotExist(new Car()
+            using (var db = new Context())
             {
-                Year = 2002,
-                CarModel = ford,
-            });
-            carRepository.AddIfNotExist(new Car()
-            {
-                Year = 2008,
-                CarModel = kia,
-            });
+                var ford = db.CarModel.FirstOrDefault(s => s.Name == "Ford");
+                db.Car.Add(new Car()
+                {
+                    Year = 2002,
+                    CarModel = ford,
+                });
+
+                var kia = db.CarModel.FirstOrDefault(s => s.Name == "KIA");
+                db.Car.Add(new Car()
+                {
+                    Year = 2008,
+                    CarModel = kia,
+                });
+
+                db.SaveChanges();
+            }
         }
 
-        private void FillUser(){
+        private void FillUser()
+        {
             var userRepository = new UserRepository();
 
-            userRepository.AddIfNotExist(new User() {
+            userRepository.AddIfNotExist(new User()
+            {
                 Email = "newMail@.com"
             });
         }

@@ -12,10 +12,6 @@ namespace CarServiceServer.Controllers
     {
         private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();
 
-        //todo test
-        // PUT api/values/5
-        //[HttpPut("{id}")]
-
         [HttpPut()]
         public ActionResult<bool> Put([FromBody] UserDTO dto)
         {
