@@ -68,17 +68,27 @@ namespace CarServiceServer.Converter
             if (dto.Car == null)
                 return null;
 
-            var carModelRepository = _repositoryFactory.GetModelRepository();
-            var foundCarModel = carModelRepository.Find(new CarModel()
+            var carModel = new CarModel()
             {
                 Name = dto.Car.CarModel
-            });
+            };
+
+            var carModelRepository = _repositoryFactory.GetModelRepository();
+            var foundCarModel = carModelRepository.Find(carModel);
+            if (foundCarModel == null)
+            {
+                carModelRepository.AddIfNotExist(carModel);
+                carModel = carModelRepository.Find(carModel);
+            }
+            else{
+                carModel = foundCarModel;
+            }
 
 
             var carRepository = _repositoryFactory.GetCarRepository();
             var car = new Car()
             {
-                CarModel = foundCarModel,
+                CarModel = carModel,
                 Year = dto.Car.Year,
             };
 
