@@ -27,7 +27,7 @@ namespace CarServiceServer.Controllers
                     converter.Convert(dto)
                 );
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return BadRequest();
             }

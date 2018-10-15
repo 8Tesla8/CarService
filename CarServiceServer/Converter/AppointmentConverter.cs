@@ -88,9 +88,10 @@ namespace CarServiceServer.Converter
             {
                 carRepository.AddIfNotExist(car);
                 car = carRepository.Find(car);
+                return car;
             }
 
-            return car;
+            return foundCar;
         }
 
 
@@ -113,9 +114,11 @@ namespace CarServiceServer.Converter
             {
                 userRepository.AddIfNotExist(user);
                 user = userRepository.Find(user);
+                return user;
             }
 
-            return user;
+
+            return foundUser;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ModelDb.Repository
                     model.ServiceType = db.ServiceType.
                         FirstOrDefault(s => s.Id == model.ServiceTypeId);
 
-                appointment.User = db.User.
+                model.User = db.User.
                     FirstOrDefault(u=> u.Id == model.UserId);
 
                 db.Appointment.Add(model);

@@ -6,8 +6,8 @@ namespace ModelDb.DTO
 {
     public class AppointmentDTO
     {
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
 
         public UserDTO User { get; set; }
         public CarDTO Car { get; set; }
