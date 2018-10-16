@@ -19,13 +19,21 @@ namespace CarServiceServer.Controllers
         {
             try
             {
-                var repository = _repositoryFactory.GetUserRepository();
-
-                return repository.Update(new User()
+                var user = new User()
                 {
                     Email = dto.Email,
                     Notify = dto.Notify,
-                });
+                };
+
+                var repository = _repositoryFactory.GetUserRepository();
+
+                var userExist = repository.AddIfNotExist(user);
+
+                if(!userExist){
+                    return repository.Update(user);
+                }
+
+                return userExist;
             }
             catch (Exception ex)
             {

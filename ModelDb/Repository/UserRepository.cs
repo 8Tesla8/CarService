@@ -54,11 +54,8 @@ namespace ModelDb.Repository
                 var user = db.User.
                              FirstOrDefault(u => u.Email == model.Email);
 
-                if (user == null){
-                    db.User.Add(model);
-                    db.SaveChanges();
-                    return true;
-                }
+                if (user == null)
+                    return false;
 
                 user.Notify = model.Notify;
                 db.SaveChanges();
