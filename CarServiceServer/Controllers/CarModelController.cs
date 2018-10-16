@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ModelDb.Factory;
-using ModelDb.Repository;
 
 namespace CarServiceServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("AllowAllHeaders")]
-    public class ServiceTypeController : ControllerBase
+    public class CarModelController : ControllerBase
     {
         private readonly IRepositoryFactory _repositoryFactory = Injection.Resolve<IRepositoryFactory>();
 
@@ -18,16 +17,18 @@ namespace CarServiceServer.Controllers
         public ActionResult<IEnumerable<string>> Get()
         {
             try{
-                var repository = _repositoryFactory.GetServiceType();
+                var repository = _repositoryFactory.GetModelRepository();
 
-                var responceList = new List<string>();
-                foreach(var serviceType in repository.GetAll()) {
-                    responceList.Add(serviceType.Name);
+                var list = new List<string>();
+                foreach (var model in repository.GetAll())
+                {
+                    list.Add(model.Name);
                 }
 
-                return responceList;
+                return list;
             }
-            catch(Exception ex){
+            catch (Exception ex)
+            {
                 return BadRequest();
             }
         }
